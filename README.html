@@ -1,1 +1,1546 @@
-# Student-portfolio-
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Adnan Alam | Portfolio</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+scroll-behavior:smooth;
+font-family:'Poppins',sans-serif;
+}
+
+:root{
+--bg:#050816;
+--bg2:#0b1120;
+--card:rgba(255,255,255,0.08);
+--text:#ffffff;
+--muted:#94a3b8;
+--cyan:#00e5ff;
+--purple:#8b5cf6;
+--border:rgba(255,255,255,.1);
+}
+
+body{
+background:linear-gradient(
+135deg,
+#050816,
+#0b1120,
+#050816
+);
+color:var(--text);
+overflow-x:hidden;
+}
+
+/* LOADER */
+
+#loader{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:#050816;
+display:flex;
+justify-content:center;
+align-items:center;
+z-index:99999;
+}
+
+.loader-content{
+text-align:center;
+}
+
+.loader-ring{
+width:80px;
+height:80px;
+border:5px solid rgba(255,255,255,.1);
+border-top:5px solid var(--cyan);
+border-radius:50%;
+animation:spin 1s linear infinite;
+margin:auto;
+margin-bottom:20px;
+}
+
+@keyframes spin{
+100%{
+transform:rotate(360deg);
+}
+}
+
+/* PROGRESS BAR */
+
+#progress-bar{
+position:fixed;
+top:0;
+left:0;
+height:4px;
+width:0%;
+background:linear-gradient(
+90deg,
+var(--cyan),
+var(--purple)
+);
+z-index:9999;
+}
+
+/* CUSTOM CURSOR */
+
+.cursor-dot{
+width:8px;
+height:8px;
+background:var(--cyan);
+position:fixed;
+border-radius:50%;
+pointer-events:none;
+z-index:99999;
+}
+
+.cursor-outline{
+width:35px;
+height:35px;
+border:2px solid var(--cyan);
+position:fixed;
+border-radius:50%;
+pointer-events:none;
+z-index:99998;
+transition:.08s;
+}
+
+/* BACK TO TOP */
+
+#topBtn{
+position:fixed;
+right:25px;
+bottom:25px;
+width:55px;
+height:55px;
+border:none;
+border-radius:50%;
+background:linear-gradient(
+135deg,
+var(--cyan),
+var(--purple)
+);
+color:white;
+cursor:pointer;
+display:none;
+z-index:1000;
+box-shadow:0 0 25px rgba(0,229,255,.4);
+}
+
+/* BACKGROUND */
+
+.bg-container{
+position:fixed;
+width:100%;
+height:100%;
+overflow:hidden;
+z-index:-1;
+}
+
+.bg-container span{
+position:absolute;
+display:block;
+border-radius:50%;
+filter:blur(100px);
+opacity:.15;
+animation:float 15s infinite ease-in-out;
+}
+
+.bg-container span:nth-child(1){
+width:300px;
+height:300px;
+background:var(--cyan);
+left:5%;
+top:10%;
+}
+
+.bg-container span:nth-child(2){
+width:350px;
+height:350px;
+background:var(--purple);
+right:10%;
+top:20%;
+}
+
+.bg-container span:nth-child(3){
+width:250px;
+height:250px;
+background:#00ff99;
+bottom:10%;
+left:15%;
+}
+
+.bg-container span:nth-child(4){
+width:220px;
+height:220px;
+background:#ff00ff;
+right:20%;
+bottom:15%;
+}
+
+.bg-container span:nth-child(5){
+width:180px;
+height:180px;
+background:#00e5ff;
+top:50%;
+left:50%;
+}
+
+@keyframes float{
+
+0%,100%{
+transform:translateY(0);
+}
+
+50%{
+transform:translateY(-50px);
+}
+
+}
+
+/* NAVBAR */
+
+header{
+position:fixed;
+width:100%;
+top:0;
+z-index:999;
+backdrop-filter:blur(20px);
+background:rgba(0,0,0,.2);
+border-bottom:1px solid rgba(255,255,255,.05);
+}
+
+nav{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:20px 8%;
+}
+
+.logo{text-shadow:
+0 0 10px rgba(0,229,255,.6),
+0 0 20px rgba(0,229,255,.4);
+}
+font-size:1.7rem;
+font-weight:800;
+background:linear-gradient(
+90deg,
+var(--cyan),
+var(--purple)
+);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+
+.nav-links{
+display:flex;
+list-style:none;
+gap:30px;
+}
+
+.nav-links a{
+color:white;
+text-decoration:none;
+font-weight:500;
+transition:.3s;
+}
+
+.nav-links a:hover{
+color:var(--cyan);
+}
+
+.menu-btn{
+display:none;
+font-size:1.8rem;
+cursor:pointer;
+}
+
+/* HERO */
+
+.hero{
+min-height:100vh;
+display:flex;
+align-items:center;
+padding:120px 8% 80px;
+}
+
+.hero-content{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:60px;
+align-items:center;
+width:100%;
+}
+
+.hero-text h4{
+color:var(--cyan);
+margin-bottom:10px;
+}
+
+.hero-text h1{
+font-size:4rem;
+line-height:1.1;
+margin-bottom:15px;
+}
+
+.hero-text h2{
+font-size:1.6rem;
+margin-bottom:20px;
+color:var(--purple);
+min-height:50px;
+}
+
+.hero-text p{
+color:var(--muted);
+line-height:1.8;
+margin-bottom:30px;
+}
+
+.image-wrapper{
+display:flex;
+justify-content:center;
+}
+
+.image-wrapper img{
+width:380px;
+height:380px;
+object-fit:cover;
+border-radius:50%;
+border:4px solid rgba(255,255,255,.1);
+box-shadow:
+0 0 30px rgba(0,229,255,.3),
+0 0 60px rgba(139,92,246,.3);
+animation:heroFloat 4s ease-in-out infinite;
+}
+
+@keyframes heroFloat{
+
+0%,100%{
+transform:translateY(0);
+}
+
+50%{
+transform:translateY(-15px);
+}
+
+}
+
+.social-links{
+display:flex;
+gap:15px;
+margin-top:25px;
+}
+
+.social-links a{
+width:50px;
+height:50px;
+display:flex;
+align-items:center;
+justify-content:center;
+background:var(--card);
+border:1px solid var(--border);
+border-radius:50%;
+color:white;
+transition:.3s;
+}
+
+.social-links a:hover{
+transform:translateY(-5px);
+background:var(--cyan);
+color:black;
+}
+
+/* BUTTONS */
+
+.btn{
+display:inline-block;
+padding:14px 28px;
+border-radius:40px;
+text-decoration:none;
+font-weight:600;
+transition:.4s;
+}
+
+.primary-btn{
+background:linear-gradient(
+90deg,
+var(--cyan),
+var(--purple)
+);
+color:white;
+}
+
+.secondary-btn{
+border:2px solid var(--cyan);
+color:white;
+}
+
+.primary-btn:hover,
+.secondary-btn:hover{
+transform:translateY(-4px);
+box-shadow:0 0 20px rgba(0,229,255,.3);
+}
+
+.hero-buttons{
+display:flex;
+gap:15px;
+flex-wrap:wrap;
+}
+
+/* SECTION */
+
+.container{
+max-width:1300px;
+margin:auto;
+}
+
+section{
+padding:100px 8%;
+}
+
+.section-title{
+font-size:3rem;
+text-align:center;
+margin-bottom:60px;
+background:linear-gradient(
+90deg,
+var(--cyan),
+white,
+var(--purple)
+);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}/* GLASSMORPHISM */
+
+.glass-card{
+background:rgba(255,255,255,.06);
+backdrop-filter:blur(20px);
+border:1px solid rgba(255,255,255,.08);
+border-radius:24px;
+padding:35px;
+transition:.4s;
+overflow:hidden;
+position:relative;
+}
+
+.glass-card:hover{
+transform:translateY(-10px);
+box-shadow:
+0 15px 40px rgba(0,229,255,.15),
+0 15px 40px rgba(139,92,246,.15);
+}
+
+.about-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(350px,1fr));
+gap:30px;
+}
+
+.about-grid h3{
+margin-bottom:20px;
+font-size:1.5rem;
+color:var(--cyan);
+}
+
+.about-grid p{
+line-height:1.9;
+color:var(--muted);
+}
+
+/* TIMELINE */
+
+.timeline{
+max-width:900px;
+margin:auto;
+position:relative;
+}
+
+.timeline::before{
+content:"";
+position:absolute;
+left:50%;
+top:0;
+width:4px;
+height:100%;
+background:linear-gradient(
+180deg,
+var(--cyan),
+var(--purple)
+);
+transform:translateX(-50%);
+}
+
+.timeline-item{
+position:relative;
+width:50%;
+padding:20px 40px;
+}
+
+.timeline-item:nth-child(odd){
+left:0;
+text-align:right;
+}
+
+.timeline-item:nth-child(even){
+left:50%;
+}
+
+.timeline-content{
+background:rgba(255,255,255,.06);
+padding:25px;
+border-radius:20px;
+backdrop-filter:blur(15px);
+border:1px solid rgba(255,255,255,.08);
+}
+
+.timeline-content h3{
+margin-bottom:10px;
+color:var(--cyan);
+}
+
+.timeline-content p{
+color:var(--muted);
+line-height:1.7;
+}
+
+.timeline-item::after{
+content:"";
+position:absolute;
+top:30px;
+width:20px;
+height:20px;
+background:var(--cyan);
+border-radius:50%;
+box-shadow:0 0 20px var(--cyan);
+}
+
+.timeline-item:nth-child(odd)::after{
+right:-10px;
+}
+
+.timeline-item:nth-child(even)::after{
+left:-10px;
+}
+
+/* STATS */
+
+.stats-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:25px;
+margin-bottom:60px;
+}
+
+.stat-card{
+background:rgba(255,255,255,.06);
+border:1px solid rgba(255,255,255,.08);
+border-radius:20px;
+padding:35px;
+text-align:center;
+transition:.4s;
+backdrop-filter:blur(20px);
+}
+
+.stat-card:hover{
+transform:translateY(-10px);
+}
+
+.stat-card h3{
+font-size:3rem;
+color:var(--cyan);
+margin-bottom:10px;
+}
+
+.stat-card p{
+color:var(--muted);
+}
+
+/* SKILLS */
+
+.skills-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+gap:20px;
+}
+
+.skill-card{ animation:floatSkill 4s ease-in-out infinite;@keyframes floatSkill{
+
+0%,100%{
+transform:translateY(0);
+}
+
+50%{
+transform:translateY(-8px);
+}
+
+}
+padding:25px;
+border-radius:18px;
+background:rgba(255,255,255,.05);
+border:1px solid rgba(255,255,255,.08);
+text-align:center;
+font-weight:600;
+transition:.4s;
+cursor:pointer;
+}
+
+.skill-card:hover{
+transform:translateY(-10px) rotateX(10deg);
+background:rgba(0,229,255,.08);
+color:var(--cyan);
+}
+
+/* PROJECTS */
+
+.projects-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(340px,1fr));
+gap:30px;
+}
+
+.project-card{
+background:rgba(255,255,255,.05);
+border-radius:25px;
+overflow:hidden;
+border:1px solid rgba(255,255,255,.08);
+backdrop-filter:blur(20px);
+transition:.5s;
+}
+
+.project-card:hover{
+transform:
+.project-card{
+transform-style:preserve-3d;
+will-change:transform;
+}
+translateY(-15px)
+rotateX(3deg)
+rotateY(3deg);
+box-shadow:
+0 15px 50px rgba(0,229,255,.15);
+}
+
+.project-image{
+overflow:hidden;
+}
+
+.project-image img{
+width:100%;
+height:250px;
+object-fit:cover;
+transition:.6s;
+}
+
+.project-card:hover img{
+transform:scale(1.08);
+}
+
+.project-content{
+padding:25px;
+}
+
+.project-content h3{
+margin-bottom:15px;
+color:white;
+}
+
+.project-content p{
+color:var(--muted);
+line-height:1.7;
+margin-bottom:20px;
+}
+
+.tech-stack{
+display:flex;
+flex-wrap:wrap;
+gap:10px;
+margin-bottom:20px;
+}
+
+.tech-stack span{
+padding:8px 14px;
+background:rgba(0,229,255,.1);
+border-radius:50px;
+font-size:.85rem;
+color:var(--cyan);
+}
+
+.project-buttons{
+display:flex;
+gap:10px;
+flex-wrap:wrap;
+}
+
+/* RESUME */
+
+.resume-box{
+max-width:900px;
+margin:auto;
+text-align:center;
+padding:60px;
+background:rgba(255,255,255,.05);
+border-radius:25px;
+backdrop-filter:blur(20px);
+border:1px solid rgba(255,255,255,.08);
+}
+
+.resume-box h3{
+font-size:2rem;
+margin-bottom:20px;
+}
+
+.resume-box p{
+max-width:650px;
+margin:auto;
+margin-bottom:25px;
+color:var(--muted);
+}
+
+.resume-buttons{
+display:flex;
+justify-content:center;
+gap:20px;
+flex-wrap:wrap;
+}
+
+/* CONTACT */
+
+.contact-grid{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:30px;
+}
+
+.contact-item{
+display:flex;
+align-items:center;
+gap:15px;
+margin-bottom:20px;
+font-size:1rem;
+}
+
+.contact-item i{
+font-size:1.2rem;
+color:var(--cyan);
+}
+
+.contact-form form{
+display:flex;
+flex-direction:column;
+gap:15px;
+}
+
+.contact-form input,
+.contact-form textarea{
+padding:15px;
+background:rgba(255,255,255,.05);
+border:1px solid rgba(255,255,255,.08);
+border-radius:12px;
+color:white;
+outline:none;
+}
+
+.contact-form textarea{
+height:150px;
+resize:none;
+}
+
+/* FOOTER */
+
+footer{
+padding:70px 8%;
+margin-top:50px;
+border-top:1px solid rgba(255,255,255,.08);
+text-align:center;
+}
+
+.footer-content h3{
+font-size:2rem;
+margin-bottom:15px;
+}
+
+.footer-content p{
+color:var(--muted);
+margin-bottom:20px;
+}
+
+.footer-socials{
+display:flex;
+justify-content:center;
+gap:15px;
+margin-bottom:20px;
+}
+
+.footer-socials a{
+width:50px;
+height:50px;
+border-radius:50%;
+display:flex;
+align-items:center;
+justify-content:center;
+background:rgba(255,255,255,.05);
+border:1px solid rgba(255,255,255,.08);
+color:white;
+transition:.3s;
+}
+
+.footer-socials a:hover{
+background:var(--cyan);
+color:black;
+transform:translateY(-5px);
+}
+
+/* REVEAL ANIMATION */
+
+.reveal{
+opacity:0;
+transform:translateY(60px);
+transition:all 1s ease;
+}
+
+.reveal.active{
+opacity:1;
+transform:translateY(0);
+}
+
+/* MOBILE */
+
+@media(max-width:1000px){
+
+.hero-content,
+.contact-grid{
+grid-template-columns:1fr;
+}
+
+.hero{
+text-align:center;
+}
+
+.hero-buttons,
+.social-links{
+justify-content:center;
+}
+
+.hero-text h1{
+font-size:3rem;
+}
+
+.image-wrapper img{
+width:300px;
+height:300px;
+}
+
+.timeline::before{
+left:20px;
+}
+
+.timeline-item{
+width:100%;
+left:0 !important;
+padding-left:60px;
+padding-right:0;
+text-align:left !important;
+}
+
+.timeline-item::after{
+left:10px !important;
+right:auto !important;
+}
+
+.nav-links{
+position:absolute;
+top:80px;
+left:0;
+width:100%;
+background:#050816;
+flex-direction:column;
+padding:30px;
+display:none;
+}
+
+.nav-links.active{
+display:flex;
+}
+
+.menu-btn{
+display:block;
+}
+}
+
+@media(max-width:600px){
+
+.hero-text h1{
+font-size:2.3rem;
+}
+
+.section-title{ text-shadow:
+0 0 20px rgba(0,229,255,.3);
+font-size:2rem;
+}
+
+.resume-box{
+padding:35px;
+}
+
+.project-buttons{
+flex-direction:column;
+}
+
+.btn{ .btn{
+position:relative;
+overflow:hidden;
+}
+.btn::before{
+
+content:"";
+
+position:absolute;
+
+top:0;
+left:-100%;
+
+width:100%;
+height:100%;
+
+background:
+linear-gradient(
+90deg,
+transparent,
+rgba(255,255,255,.2),
+transparent
+);
+
+transition:.6s;
+
+}
+
+.btn:hover::before{
+
+left:100%;
+
+}
+text-align:center;
+}
+}
+html{
+scroll-behavior:smooth;
+}
+
+img{
+max-width:100%;
+display:block;
+}
+
+body{
+min-height:100vh;
+}
+</style>
+
+</head>
+
+<body>
+
+<!-- LOADING SCREEN -->
+
+<div id="loader">
+
+<div class="loader-content">
+
+<div class="loader-ring"></div>
+
+<h2>Loading Portfolio...</h2>
+
+</div>
+
+</div>
+
+<!-- SCROLL PROGRESS BAR -->
+
+<div id="progress-bar"></div>
+
+<!-- CUSTOM CURSOR -->
+
+<div class="cursor-dot"></div>
+<div class="cursor-outline"></div>
+
+<!-- BACK TO TOP BUTTON -->
+
+<button id="topBtn">
+<i class="fas fa-arrow-up"></i>
+</button>
+
+<!-- BACKGROUND EFFECTS -->
+
+<div class="bg-container">
+
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+
+</div>
+
+<!-- HEADER -->
+
+<header>
+
+<nav>
+
+<div class="logo">
+ADNAN.
+</div>
+
+<ul class="nav-links" id="navLinks">
+
+<li><a href="#home">Home</a></li>
+
+<li><a href="#about">About</a></li>
+
+<li><a href="#skills">Skills</a></li>
+
+<li><a href="#projects">Projects</a></li>
+
+<li><a href="#resume">Resume</a></li>
+
+<li><a href="#contact">Contact</a></li>
+
+</ul>
+
+<div class="menu-btn" id="menuBtn">
+
+<i class="fas fa-bars"></i>
+
+</div>
+
+</nav>
+
+</header>
+
+<!-- HERO SECTION -->
+
+<section id="home" class="hero">
+
+<div class="hero-content">
+
+<div class="hero-text reveal">
+
+<h4>Hello, I'm</h4>
+
+<h1>Adnan Alam</h1>
+
+<h2>
+<span id="typing"></span>
+</h2>
+
+<p>
+
+CSE (Data Science) Student passionate about
+Web Development, Software Engineering,
+Problem Solving and creating modern digital experiences.
+
+</p>
+
+<div class="hero-buttons">
+
+<a href="#projects" class="btn primary-btn">
+
+View Projects
+
+</a>
+
+<a href="#contact" class="btn secondary-btn">
+
+Contact Me
+
+</a>
+
+</div>
+
+<div class="social-links">
+
+<a href="#"><i class="fab fa-github"></i></a>
+
+<a href="#"><i class="fab fa-linkedin"></i></a>
+
+<a href="#"><i class="fab fa-instagram"></i></a>
+
+<a href="#"><i class="fab fa-x-twitter"></i></a>
+
+</div>
+
+</div>
+
+<div class="hero-image reveal">
+
+<div class="image-wrapper">
+
+<img
+src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=1000"
+alt="Profile">
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ABOUT SECTION -->
+
+<section id="about">
+
+<div class="container">
+
+<h2 class="section-title reveal">
+
+About Me
+
+</h2>
+
+<div class="about-grid">
+
+<div class="glass-card reveal">
+
+<h3>Who Am I?</h3>
+
+<p>
+
+I am Adnan Alam, a Computer Science
+(Data Science) student at ITS Engineering College.
+
+I enjoy building modern websites,
+learning new technologies,
+improving problem-solving skills
+and preparing for a career in software development.
+
+</p>
+
+</div>
+
+<div class="glass-card reveal">
+
+<h3>Career Objective</h3>
+
+<p>
+
+My goal is to become a highly skilled
+Software Engineer capable of building
+web applications, software products,
+AI-powered solutions and scalable systems.
+
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- TIMELINE SECTION -->
+
+<section id="timeline">
+
+<div class="container">
+
+<h2 class="section-title reveal">
+
+Journey
+
+</h2>
+
+<div class="timeline">
+
+<div class="timeline-item reveal">
+
+<div class="timeline-content">
+
+<h3>Started Programming</h3>
+
+<p>
+
+Began learning programming fundamentals
+and problem solving using C language.
+
+</p>
+
+</div>
+
+</div>
+
+<div class="timeline-item reveal">
+
+<div class="timeline-content">
+
+<h3>Frontend Development</h3>
+
+<p>
+
+Learned HTML, CSS and JavaScript
+to build modern websites and user interfaces.
+
+</p>
+
+</div>
+
+</div>
+
+<div class="timeline-item reveal">
+
+<div class="timeline-content">
+
+<h3>Data Science Journey</h3>
+
+<p>
+
+Started pursuing Computer Science
+(Data Science) and exploring future technologies.
+
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- SKILLS SECTION -->
+
+<section id="skills">
+
+<div class="container">
+
+<h2 class="section-title reveal">
+
+Technical Skills
+
+</h2>
+
+<div class="stats-grid">
+
+<div class="stat-card reveal">
+
+<h3 class="counter" data-target="15">
+
+0
+
+</h3>
+
+<p>Projects Completed</p>
+
+</div>
+
+<div class="stat-card reveal">
+
+<h3 class="counter" data-target="8">
+
+0
+
+</h3>
+
+<p>Technologies Learned</p>
+
+</div>
+
+<div class="stat-card reveal">
+
+<h3 class="counter" data-target="100">
+
+0
+
+</h3>
+
+<p>Hours Practiced</p>
+
+</div>
+
+<div class="stat-card reveal">
+
+<h3 class="counter" data-target="5">
+
+0
+
+</h3>
+
+<p>Major Projects</p>
+
+</div>
+
+</div>
+
+<div class="skills-grid">
+
+<div class="skill-card reveal">HTML5</div>
+
+<div class="skill-card reveal">CSS3</div>
+
+<div class="skill-card reveal">JavaScript</div>
+
+<div class="skill-card reveal">C Programming</div>
+
+<div class="skill-card reveal">Responsive Design</div>
+
+<div class="skill-card reveal">Git & GitHub</div>
+
+<div class="skill-card reveal">Problem Solving</div>
+
+<div class="skill-card reveal">Data Science</div>
+
+</div>
+
+</div>
+
+</section><!-- PROJECTS SECTION -->
+
+<section id="projects">
+
+<div class="container">
+
+<h2 class="section-title reveal">
+
+Featured Projects
+
+</h2>
+
+<div class="projects-grid">
+
+<!-- Project 1 -->
+
+<div class="project-card reveal">
+
+<div class="project-image">
+
+<img
+src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=1200"
+alt="Calculator">
+
+</div>
+
+<div class="project-content">
+
+<h3>Advanced Calculator</h3>
+
+<p>
+
+Modern calculator built using
+HTML, CSS and JavaScript featuring
+responsive design and interactive UI.
+
+</p>
+
+<div class="tech-stack">
+
+<span>HTML</span>
+<span>CSS</span>
+<span>JavaScript</span>
+
+</div>
+
+<div class="project-buttons">
+
+<a href="#" class="btn primary-btn">
+
+Live Demo
+
+</a>
+
+<a href="#" class="btn secondary-btn">
+
+Source
+
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- Project 2 -->
+
+<div class="project-card reveal">
+
+<div class="project-image">
+
+<img
+src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=1200"
+alt="Portfolio">
+
+</div>
+
+<div class="project-content">
+
+<h3>Student Portfolio</h3>
+
+<p>
+
+Personal portfolio showcasing
+skills, achievements, projects
+and professional growth.
+
+</p>
+
+<div class="tech-stack">
+
+<span>HTML</span>
+<span>CSS</span>
+<span>JavaScript</span>
+
+</div>
+
+<div class="project-buttons">
+
+<a href="#" class="btn primary-btn">
+
+Live Demo
+
+</a>
+
+<a href="#" class="btn secondary-btn">
+
+Source
+
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- Project 3 -->
+
+<div class="project-card reveal">
+
+<div class="project-image">
+
+<img
+src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=1200"
+alt="Math Game">
+
+</div>
+
+<div class="project-content">
+
+<h3>Math Learning Game</h3>
+
+<p>
+
+Educational game concept designed
+to make mathematics fun through
+stories, levels and challenges.
+
+</p>
+
+<div class="tech-stack">
+
+<span>Game Logic</span>
+<span>JavaScript</span>
+<span>UI Design</span>
+
+</div>
+
+<div class="project-buttons">
+
+<a href="#" class="btn primary-btn">
+
+Preview
+
+</a>
+
+<a href="#" class="btn secondary-btn">
+
+Details
+
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- Project 4 -->
+
+<div class="project-card reveal">
+
+<div class="project-image">
+
+<img
+src="https://images.unsplash.com/photo-1515879218367-8466d910aaa4?w=1200"
+alt="C Projects">
+
+</div>
+
+<div class="project-content">
+
+<h3>C Programming Collection</h3>
+
+<p>
+
+Collection of logic-building programs
+covering patterns, loops,
+algorithms and problem solving.
+
+</p>
+
+<div class="tech-stack">
+
+<span>C</span>
+<span>Logic</span>
+<span>Algorithms</span>
+
+</div>
+
+<div class="project-buttons">
+
+<a href="#" class="btn primary-btn">
+
+Preview
+
+</a>
+
+<a href="#" class="btn secondary-btn">
+
+Source
+
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- Project 5 -->
+
+<div class="project-card reveal">
+
+<div class="project-image">
+
+<img
+src="https://images.unsplash.com/photo-155594996
